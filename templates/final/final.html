@@ -1,0 +1,46 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BLOG</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <style>
+        .table{
+            width:80%;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">순번</th>
+        <th scope="col">제목</th>
+        <th scope="col">내용</th>
+        <th scope="col">글쓴이</th>
+        <th scope="col">작성시간</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in post %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ p.title| truncatewords:3 }}</td>
+        <td>{{ p.content| truncatewords:5 }}</td>
+        <td>{{ p.author }}</td>
+        <td>{{ p.created }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<script src=" {% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
+
